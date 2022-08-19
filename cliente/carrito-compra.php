@@ -42,11 +42,11 @@ $message='';
         function addCarrito(producto){
             if(!!producto){
                         $.ajax({
-                            url: "http://localhost/IntegradoraB/faster-1.0.0/carrito-compra.php",
+                            url: "http://localhost/IntegradoraExtra/cliente/carrito-compra.php",
                             type: "GET",
                             data: "idProducto="+producto,
                             success: function(data){
-                                window.location.href = 'http://localhost/IntegradoraB/faster-1.0.0/carrito-compra.php';
+                                window.location.href = 'http://localhost/IntegradoraExtra/cliente/carrito-compra.php';
                             }
                         });
                     }         
@@ -54,22 +54,22 @@ $message='';
         function updateCarrito(producto){
                     if(!!producto){
                         $.ajax({
-                            url: "http://localhost/IntegradoraB/faster-1.0.0/carrito-compra.php",
+                            url: "http://localhost/IntegradoraExtra/cliente/carrito-compra.php",
                             type: "GET",
                             data: "KeyProducto="+producto,
                             success: function(data){
-                                window.location.href = 'http://localhost/IntegradoraB/faster-1.0.0/carrito-compra.php';
+                                window.location.href = 'http://localhost/IntegradoraExtra/cliente/carrito-compra.php';
                             }
                         });
                     }
                 };
                 function deleteCarrito(){
                     $.ajax({
-                            url: "http://localhost/IntegradoraB/faster-1.0.0/carrito-compra.php",
+                            url: "http://localhost/IntegradoraExtra/cliente/carrito-compra.php",
                             type: "GET",
                             data: "KeyUser="+1,
                             success: function(data){
-                                window.location.href = 'http://localhost/IntegradoraB/faster-1.0.0/carrito-compra.php';
+                                window.location.href = 'http://localhost/IntegradoraExtra/cliente/carrito-compra.php';
                             }
                     });
                 };
@@ -132,8 +132,7 @@ $message='';
                         <th scope="col">Precio producto</th>
                         <th scope="col">Cantidad</th>
                         <th scope="col">Total</th>
-                        <th scope="col">Agregar</th>
-                        <th scope="col">Eliminar</th>
+                        <th scope="col">Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -227,13 +226,9 @@ $message='';
                                 <td>'.$producto['cantidad'].'</td>
                                 <td>$'.$total.'</td>
                                 <td> 
-                                    <button type="button" onclick="addCarrito('.$producto['Id'].')" class="btn btn-success">
-                                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                    <button type="button" onclick="addCarrito('.$producto['Id'].')" class="btn btn-success">+
                                     </button>
-                                </td>
-                                <td>
-                                    <button type="button" onclick="updateCarrito('.$producto['Id'].')" class="btn btn-danger">
-                                        <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                                    <button type="button" onclick="updateCarrito('.$producto['Id'].')" class="btn btn-danger">-
                                     </button>
                                 </td>
                                 </tr>

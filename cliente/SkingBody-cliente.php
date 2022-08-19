@@ -85,42 +85,29 @@ $sucursal_name = 'No seleccionada';
     <script type="text/javascript">
         //Funcion para ver el carrito
         function showCarrito(){
-            window.location.href = 'http://localhost/IntegradoraB/faster-1.0.0/carrito-compra.php';        
+            window.location.href = 'http://localhost/IntegradoraExtra/cliente/carrito-compra.php';        
         }
         //Funcion para agregar al carrito
         function carrito(producto){
-            let sucursal_id  = localStorage.getItem('sucursal')
+            let id = "cantidadCarrito-"+producto;
+            let cantidad = document.getElementById(id).value;
+            let sucursal_id  = window.localStorage.getItem('sucursal');
                     if(!!producto && !!sucursal_id){
                         $.ajax({
                             url: "SkingBody-cliente.php",
                             type: "GET",
-                            data: {idProducto:producto, sucursal_id: sucursal_id},
+                            data: {idProducto:producto, sucursal_id: sucursal_id, cantidad: cantidad},
                             success: function(data){
                                 console.log(data);
                             }
                         });
                     }
-                };
+        }
         //Funcion para lanzar la consulta al cambio de sucursal
         function changeSucursal(e){
-            localStorage.setItem('sucursal', e)
+            window.localStorage.setItem('sucursal', e)
             window.location.href = "http://localhost/IntegradoraExtra/cliente/SkingBody-cliente.php?idSucursal="+e;
         }
-
-        $(document).ready(function() {
-            $("#btMax").click(function(){
-                let max = document.getElementById('maximo').value;
-                let cantidad_agregar = document.getElementById('cantidadCarrito').value;
-                let nueva_cantida = cantidad_agregar + 1;
-                if(nueva_cantida >= max){
-                    document.getElementById("cantidadCarrito").value = nueva_cantida;
-                }else{
-                    document.getElementById("cantidadCarrito").value = max;
-                }
-                
-                
-            }); 
-        });
     </script>
     <?php 
     //Valida que exista el producto
@@ -128,14 +115,16 @@ $sucursal_name = 'No seleccionada';
             //Se guadar en la variable el id del producto obtenido del get
             $producto_id = $_GET['idProducto'];
             $sucursal_id = $_GET['sucursal_id'];
+            $cantidad = $_GET['cantidad'];
             $usuario_id = 1;
             //consulta para verificar si en el carrito del usuario ya existe el producto 
             $query_inventario = mysqli_query($mysqli, 
             "SELECT * FROM carrito_usuario WHERE id_producto = $producto_id AND id_usuario= $usuario_id");
             $response_query =  mysqli_fetch_assoc($query_inventario);
+            echo "ando en el query";
             if($response_query['id_usuario']){
                 $cantidad_db = $response_query['cantidad'];
-                $cantidad_nueva = $cantidad_db + 1;
+                $cantidad_nueva = $cantidad_db + $cantidad;
                 $update_carrito = "UPDATE carrito_usuario SET cantidad=$cantidad_nueva WHERE id_usuario=$usuario_id AND id_producto = $producto_id";
                 if (mysqli_query($mysqli, $update_carrito)) {
                     echo 'El producto ha sido actualizado';
@@ -144,7 +133,7 @@ $sucursal_name = 'No seleccionada';
                 }
             }else{
                 $sql = "INSERT INTO carrito_usuario (id_sesion, id_producto, id_usuario, cantidad)
-                VALUES ($usuario_id, $producto_id, $usuario_id,1)";
+                VALUES ($usuario_id, $producto_id, $usuario_id,$cantidad)";
                 if (mysqli_query($mysqli, $sql)) {
                     echo 'El producto ha sido agregado';
                 } else {
@@ -181,6 +170,7 @@ $sucursal_name = 'No seleccionada';
                             producto.Nom_prod,
                             producto.Marca_prod,
                             producto.Prec_prod,
+                            producto.Id as productoKey,
                             categoria.Nombre_cat as categoria,
                             producto.Caract_prod,
                             producto.Exist_prod,
@@ -219,11 +209,12 @@ $sucursal_name = 'No seleccionada';
                 $sucursal_name = 'No seleccionada';
                 $inventario = 0;
             }
-           
             $var1 = 'img/';
             $var2 = $producto['URLIMG'];
-
+            $id_input = 'cantidadCarrito-';
+            $producto_id_input = $producto['productoKey'];
             $texto_completo = $var1 . $var2;
+            $idInput = $id_input . $producto_id_input;
         ?>
         <div class="col-md-4">
              <div class="card" style="width: 90%; margin-block-end: 8%;">
@@ -237,15 +228,14 @@ $sucursal_name = 'No seleccionada';
                         <h4>$<?=$producto['Prec_prod']?></h4>
                         <hr>
                         <div style="text-align: center;">
-                            <button type="button" class="btn btn-info">-</button>
-                            <input id="cantidadCarrito" style="width: 15%;text-align: center;" type="text" value="1" readonly>
-                            <button type="button" class="btn btn-info" id="btMax">+</button>
+                            <input id="<?=$idInput?>" style="width: 35%; text-align: center;" type="number"  value="1" min="1" max="<?=$inventario?>" onKeyDown="return false">
+                           
                         </div>
                         
                         <hr>
                         <div class="row">
                             <div class="col" style="text-align: center;">
-                                <button type="button" class="btn btn-info" onclick="carrito(<?$producto['Id']?>)">
+                                <button type="button" class="btn btn-info" onclick="carrito(<?=$producto_id_input?>)">
                                     <i class="fa fa-cart-plus" aria-hidden="true"></i>&nbsp;Agregar
                                 </button>
                             </div>
