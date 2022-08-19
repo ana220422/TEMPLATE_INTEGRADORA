@@ -7,12 +7,12 @@ $mysqli = conectar();
 //variables
 $message='';
 if (!empty($_POST['email'])&& !empty($_POST['password'])){
-$query_productos = mysqli_query($mysqli, "SELECT max(Id) as total FROM usuario");
-$id = mysqli_fetch_assoc($query_productos);
-$newId =  $id['total'] + 1;
+// $query_productos = mysqli_query($mysqli, "SELECT max(Id) as total FROM usuario");
+// $id = mysqli_fetch_assoc($query_productos);
+// $newId =  $id['total'] + 1;
 
 $sql="INSERT INTO usuario (Id,Nombre_usuario,passwordU, Tipo) values 
-($newId,:email,:password,'UserC')";
+(1,:email,:password,'Admin')";
 $stmt=$conn->prepare($sql);
 $stmt->bindParam(':email',$_POST['email']);
 //cifrado de la contraseña
@@ -42,7 +42,7 @@ if ($stmt->execute()){
     ?>
     <p><?= $message ?></p>
     <?php endif?>
-    <h1>REGISTRATE AQUÍ</h1>
+    <h1>REGISTRATE AQUÍ </h1>
     <samp>or <a href="login.php">Login</a></samp>
     <form action="registro.php" method="post">
         <input type="text" name="email" placeholder="Enter you email">
