@@ -45,7 +45,8 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">MakeUp Gold</span>
+        <!--Logo -->
+        <span class="d-none d-lg-block">MakeUp Gold </span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -74,8 +75,9 @@
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <!--Mi cuenta-->
             <li class="dropdown-header">
-              <h6>MakeUp Gold</h6>
+              <h6>MakeUp Gold </h6>
               <span>Administrador</span>
             </li>
             <li>
