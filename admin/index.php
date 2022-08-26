@@ -45,7 +45,6 @@
                     <div class="ps-3">
                       <h6>145</h6>
                       <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
                     </div>
                   </div>
                 </div>
@@ -87,6 +86,60 @@
 
               </div>
             </div><!-- End Revenue Card -->
+
+          <!-- vista -->
+            <div class="col-xxl-4 col-md-8">
+              <div class="card info-card sales-card">
+
+                <?php
+                  // conexion con la base de datos
+                  require_once("mysql.lib.php"); //ingresa el codigo de la bibioteca
+                  $mysqli = conectar();
+                  /*
+                  Ejecucion una consulta sql si una consulta es un select te devuelve un objeto de la clase mysql_resulttambien conocido como resultset o conjunto resultado
+                  */
+
+                  $sql = "select * from primera_vista1";
+                  $rs = query($sql);
+
+                  ?>
+
+                <div class="card-body">
+                  <?php if ($rs->num_rows  > 0 ) : ?>
+                      <table class="table table-bordered table-hover mt-2">
+                        <tr class="text-center table-info">
+                        <th>Id</th>
+                        <th>Nombre sucursal</th>
+                        <th>Nombre producto</th>
+                         </tr>
+                        <?php while ($row = $rs->fetch_assoc() ) :
+                          extract($row);
+
+                          ?>
+                            <td class="text-center"><?=$Id ?></td>
+                            <td><?=$nom_suc ?></td>
+                            <td class="text-center"><?=$nom_prod ?></td>
+                          </tr>
+                          <?php endwhile; ?>
+                          hola
+                              </table>
+                          <?php else : ?>
+
+                          <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+                            <i class="fas fa-ban fa-3x"></i>
+                            ¡No hay productos!
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          </div>
+                      <?php endif; ?>
+                    </div>
+
+                   <span class="text-muted small pt-2 ps-1">increase</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Sales Card -->
 
 
 

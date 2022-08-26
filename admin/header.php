@@ -43,7 +43,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="index.php" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
         <span class="d-none d-lg-block">MakeUp Gold</span>
       </a>
@@ -126,11 +126,11 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link " href="index.php">
           <i class="bi bi-person-video2"></i>
           <span>Dashboard</span>
         </a>
-      </li><!-- End Dashboard Nav -->
+      </li><!-- fin del nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
@@ -138,7 +138,7 @@
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.php">
+            <a href="usuarios.php">
               <i class="bi bi-circle"></i><span>Usuario</span>
             </a>
           </li>
@@ -160,6 +160,11 @@
               <i class="bi bi-circle"></i><span>Productos</span>
             </a>
           </li>
+          <li>
+            <a href="Categorias.php">
+              <i class="bi bi-circle"></i><span>Categorias</span>
+            </a>
+          </li>
         </ul>
       </li><!-- Final productos -->
 
@@ -176,7 +181,7 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="forms-elements.html">
+            <a href="makeupgolsucursales.php">
               <i class="bi bi-circle"></i><span>MakeUpQueretaro</span>
             </a>
           </li>

@@ -1,10 +1,29 @@
-<?= require_once('header.php') ?>
+<?= require_once('header.php'); 
+$conexion = require_once("mysql.lib.php");
+$mysqli = conectar();
+
+
+//Query que se ejecuta para obtener todos los producto
+$query_clientes = mysqli_query($mysqli, "SELECT * FROM cliente");
+
+?>
 
   <main id="main" class="main">
 
     <div class="pagetitle">
       <h1>Clientes</h1>
     </div><!-- End Page Title -->
+
+crear nuevo usuario
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <a href="crear.php"  class="btn btn-primary mt-4">Crear alumno</a>
+      <hr>
+    </div>
+  </div>
+</div> -->
 
 <div>
   <table class="table">
@@ -18,49 +37,27 @@
       <th scope="col">Opciones</th>
     </tr>
   </thead>
+  
   <tbody class="table-group-divider">
+    <?php  while ($mostrar=mysqli_fetch_array($query_clientes)) {
+      // code...
+    ?>
     <tr>
       <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+      <td><?php echo $mostrar['Id'] ?></td>
+      <td><?php echo $mostrar['Nombre'] ?></td>
+      <td><?php echo $mostrar['Direccion'] ?></td>
+      <td><?php echo $mostrar['Telefono'] ?></td>
+      <td><?php echo $mostrar['Direccion Fiscal'] ?></td>
       <td>
           <button type="button" class="btn btn-danger"><i class="bi bi-person-dash"></i></button>
           <button type="button" class="btn btn-success"><i class="bi bi-pencil-square"></i></button>
       </td>            
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    <?php 
+    }
+    ?>
   </tbody>
 </table>
 </div>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/chart.js/chart.min.js"></script>
-  <script src="assets/vendor/echarts/echarts.min.js"></script>
-  <script src="assets/vendor/quill/quill.min.js"></script>
-  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-
-</body>
-
-</html>
