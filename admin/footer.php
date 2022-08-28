@@ -1,6 +1,7 @@
+</main>
 <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
-    <div class="container col col-md-8">
+    <div class="container col col-md-12">
     <div class="copyright">
       &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
     </div>

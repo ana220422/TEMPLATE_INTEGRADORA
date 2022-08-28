@@ -10,6 +10,6 @@ $error_id = isset($_GET['msg']) ? (int)$_GET['msg'] : 0;
 if ($error_id != 0 && in_array($error_id, [1,2,3,4])) {
     echo $errors[$error_id];
 }else{
-    echo 'CATEGORIAS';
+    echo 'MakeUp Gold';
 }
 ?>

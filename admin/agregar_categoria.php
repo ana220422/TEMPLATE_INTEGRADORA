@@ -20,9 +20,10 @@
                 </div>
                 <br>
                 <input type="submit" class="btn btn-primary" name="submit" value="Guardar">
+                <a href="Categorias.php" class="btn btn-light">Cancelar</a>
             </form>
         </div>
     </div>        
-</div><br><br>
+</div><br><br><br> <br><br> <br>
 
 <?php require_once('footer.php') ?>

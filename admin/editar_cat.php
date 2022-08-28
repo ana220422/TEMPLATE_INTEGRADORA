@@ -7,7 +7,7 @@ $mysqli = conectar();
 
 $query = "UPDATE categoria set Id='" . $_POST['Id'] . "', Nombre_cat='" . $_POST['Nombre_cat'] . "' WHERE Id='" . $_POST['Id'] . "'"; // update form data from the database
 
- if (mysqli_query($dbCon, $query)) {
+ if (mysqli_query($mysqli, $query)) {
     $msg = 2;
  } else {
     $msg = 4;

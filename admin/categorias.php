@@ -10,57 +10,26 @@ $query_clientes = mysqli_query($mysqli, "SELECT * FROM categoria");
 
   <main id="main" class="main">
 
-    <div class="container">
     <div class="pagetitle">
-      <h1>Categorias</h1>
+      <h1>Productos</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+          <li class="breadcrumb-item">Productos</li>
+          <li class="breadcrumb-item active">Categorias</li>
+        </ol>
+      </nav>
     </div><!-- End Page Title -->
-
-<!-- <div class="col col-md-10">
-  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Opciones</th>
-    </tr>
-  </thead>
-  
-  <tbody class="table-group-divider">
-    <form  role="form" name="formListCbLanguage"
-    method="post" action="index.php">
-    <?php  while ($mostrar=mysqli_fetch_array($query_clientes)) {
-      // code...
-    ?>
-    <tr>
-      <td><?php echo $mostrar['Id'] ?></td>
-      <td><?php echo $mostrar['Nombre_cat'] ?></td>
-      <td>
-          <button type="button" class="btn btn-danger"><i class="bi bi-person-dash"></i></button>
-          <button type="button" class="btn btn-success"><i class="bi bi-pencil-square"></i></button>
-      </td>            
-    </tr>
-    <?php 
-    }
-    ?>
-  </form>
-  </tbody>
-</table>
-</div>
-</div> -->
-
-
 
 <div class="container mt-2">
     <div class="row">
         <div class="col-md-12">
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-              <?php include 'msg.php';  ?>
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
+            <div class="alert alert-warning alert-dismissible fade show mt-3 col-md-4" role="alert"><?php include 'msg.php'; ?>
+              <i class="fas fa-ban fa-3x"></i>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-7">
             <div class="float-left">
                 <h2>Lista de categorias</h2>
             </div>            
@@ -68,7 +37,7 @@ $query_clientes = mysqli_query($mysqli, "SELECT * FROM categoria");
                 <a href="agregar_categoria.php" class="btn btn-success">Agregar nueva categoria</a>
             </div>
            
-            <table class="table">
+            <table class="table table-bordered table-hover mt-2">
               <thead>
                 <tr>
                   <th scope="col">Id</th>
@@ -90,13 +59,14 @@ $query_clientes = mysqli_query($mysqli, "SELECT * FROM categoria");
                     <th scope="row"><?php echo $array[0];?></th>
                     <td><?php echo $array[1];?></td>
                     <td> 
-                      <a href="edicion_cat.php?Id=<?php echo $array[0];?>" class="btn btn-primary">editar</a>
-                      <a href="eliminar_cat.php?Id=<?php echo $array[0];?>" class="btn btn-danger">Eliminar</a>
+                      <a href="edicion_cat.php?Id=<?php echo $array[0];?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                      <a href="eliminar_cat.php?Id=<?php echo $array[0];?>" class="btn btn-danger"><i class="bi bi-file-x-fill"></i></a>
+                    </td>
                 </tr>
                 <?php endwhile; ?>
                 <?php else: ?>
                 <tr>
-                   <td colspan="3" rowspan="1" headers="">No Data Found</td>
+                   <td colspan="3" rowspan="1" headers="">No Hay Registros</td>
                 </tr>
                 <?php endif; ?>
                 <?php mysqli_free_result($result); ?>
@@ -105,6 +75,7 @@ $query_clientes = mysqli_query($mysqli, "SELECT * FROM categoria");
         </div>
     </div>        
 </div>
+
 <?php include_once "footer.php"; ?>
 
 

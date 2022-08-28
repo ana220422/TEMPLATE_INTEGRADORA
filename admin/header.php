@@ -153,7 +153,7 @@
       </li><!-- Final de nav usuarios -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="producto.php">
           <i class="bi bi-bag-heart"></i><span>Produtos</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
@@ -183,18 +183,18 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="makeupgolsucursales.php">
+            <a href="makeupgoldqueretaro.php">
               <i class="bi bi-circle"></i><span>MakeUpQueretaro</span>
             </a>
           </li>
           <li>
-            <a href="forms-layouts.html">
+            <a href="makeupgoldmichoacan.php">
               <i class="bi bi-circle"></i><span>MakeUpMichoacan</span>
             </a>
           </li>
           <li>
-            <a href="forms-editors.html">
-              <i class="bi bi-circle"></i><span>MakeUpGaudalajara</span>
+            <a href="makeupgoldpuebla.php">
+              <i class="bi bi-circle"></i><span>MakeUpPuebla</span>
             </a>
           </li>
         </ul>

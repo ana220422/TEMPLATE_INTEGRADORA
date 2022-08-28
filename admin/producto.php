@@ -7,7 +7,7 @@ $mysqli = conectar();
 
 //Query que se ejecuta para obtener todos los producto
 $sql ="SELECT * FROM Producto";
-$resultado = query($sql);
+// $resultado = query($sql);
 
 ?>
 
@@ -24,16 +24,21 @@ $resultado = query($sql);
       </nav>
     </div><!-- End Page Title -->
 
-  <div class="container">
+<div class="container mt-2">
     <div class="row">
-      <div class="col-md-12">
-        <a class="btn btn-primary mt-4" href="formulario_producto.php?accion=alta"><i class="bi bi-plus-circle"></i>Nuevo</a>
-        <hr>
-      </div>
-    </div>
-  </div>
-  <div>
-  <?php if ($resultado->num_rows > 0 ) : ?>
+        <div class="col-md-12">
+            <div class="alert alert-warning alert-dismissible fade show mt-3 col-md-4" role="alert"><?php include 'msg.php'; ?>
+              <i class="fas fa-ban fa-3x"></i>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="float-left">
+                <h2>Lista de categorias</h2>
+            </div>            
+            <div class="float-right">
+                <a href="agregar_producto.php" class="btn btn-success">Agregar nuevo producto</a>
+            </div>
     <table class="table table-bordered table-hover mt-2">
     <thead>
       <tr>
@@ -49,35 +54,42 @@ $resultado = query($sql);
       </tr>
     </thead>
   <tbody class="table-group-divider">
-    <?php  while ($mostrar=mysqli_fetch_array($resultado)) :
-    ?>
-    <tr>
-      <th scope="row"><?php echo $mostrar['Id'] ?></th>
-      <td><?= $mostrar['Nom_prod'] ?></td>
-      <td><?= $mostrar['Marca_prod'] ?></td>
-      <td><?= $mostrar['Cost_prod'] ?></td>
-      <td><?= $mostrar['Prec_prod'] ?></td>
-      <td><?= $mostrar['Caract_prod'] ?></td>
-      <td><?= $mostrar['Exist_prod'] ?></td>
-      <td><?= $mostrar['Id_categoria'] ?></td>
-      <td>
-          <a href="procesa_producto.php?accion=eliminar&Id=<?= $mostrar['Id'] ?>" class="btn btn-danger"><i class="bi bi-file-x-fill"></i></a>
-
-          <a href="formulario_producto.php?accion=cambio&Id=<?= $mostrar['Id'] ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a> 
-      </td>            
-    </tr>
-    <?php 
-    endwhile;
-    ?>
-  </tbody>
-</table>
-  <?php else : ?>
-      <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
-        <i class="fas fa-ban fa-3x"></i>
-        ¡No hay Productos!
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    <?php endif; ?>
-<a href="nuevo.php"> <button type="button" class="btn btn-info">Nuevo</button> </a>
+    <?php
+                // include 'mydbCon.php';
+                $conexion = require_once("mysql.lib.php");
+                $mysqli = conectar();
+                $query="select * from producto"; // Fetch all the data from the table customers
+                $result=mysqli_query($mysqli,$query);
+                ?>
+                <?php if ($result->num_rows > 0): ?>
+                <?php while($array=mysqli_fetch_row($result)): ?>
+                <tr>
+                    <th scope="row"><?php echo $array[0];?></th>
+                    <td><?php echo $array[1];?></td>
+                    <td><?php echo $array[2];?></td>
+                    <td><?php echo $array[3];?></td>
+                    <td><?php echo $array[4];?></td>
+                    <td><?php echo $array[5];?></td>
+                    <td><?php echo $array[6];?></td>
+                    <td><?php echo $array[7];?></td>
+                    <td> 
+                      <a href="edicion_cat.php?Id=<?php echo $array[0];?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                      <a href="eliminar_cat.php?Id=<?php echo $array[0];?>" class="btn btn-danger"><i class="bi bi-file-x-fill"></i></a>
+                    </td>
+                </tr>
+                <?php endwhile; ?>
+                <?php else: ?>
+                <tr>
+                   <td colspan="3" rowspan="1" headers="">No Hay Registros</td>
+                </tr>
+                <?php endif; ?>
+                <?php mysqli_free_result($result); ?>
+              </tbody>
+            </table>
+        </div>
+    </div>        
 </div>
-<?php require_once('footer.php') ?>
+
+<?php include_once "footer.php"; ?>
+
+
