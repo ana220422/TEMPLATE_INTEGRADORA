@@ -147,7 +147,49 @@ $mysqli = conectar();
                 </div>
           </div>
         </div>
-        
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThreee" aria-expanded="false" aria-controls="flush-collapseThreee">
+                Inventario
+              </button>
+            </h2>
+            <div id="flush-collapseThreee" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                <div class="">
+                        <table class="table table-bordered table-hover mt-2">
+                        <thead>
+                          <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Id sucursal</th>
+                            <th scope="col">Nombre producto</th>
+                          </tr>
+                        </thead>
+                      <tbody class="table-group-divider">
+                        <?php
+                        // include 'mydbCon.php';
+                        $conexion = require_once("mysql.lib.php");
+                        $mysqli = conectar();
+                        $query="SELECT inventario.Id,Id_suc,producto.Nom_prod from inventario inner join producto on(inventario.id_prod=producto.id)"; // Fetch all the data from the table customers
+                        $result=mysqli_query($mysqli,$query);
+                        ?>
+                        <?php if ($result->num_rows > 0): ?>
+                        <?php while($array=mysqli_fetch_row($result)): ?>
+                        <tr>
+                            <th scope="row"><?php echo $array[0];?></th>
+                            <td><?= $array[1];?></td>
+                            <td><?= $array[2];?></td>
+                        </tr>
+                        <?php endwhile; ?>
+                        <?php else: ?>
+                        <tr>
+                           <td colspan="3" rowspan="1" headers="">No Hay Registros</td>
+                        </tr>
+                        <?php endif; ?>
+                        <?php mysqli_free_result($result); ?>
+                      </tbody>
+                    </table>
+                </div>
+          </div>
+        </div>
 
         </div>
     </div>        

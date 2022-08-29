@@ -8,7 +8,6 @@ $mysqli = conectar();
 
 $mysqli -> autocommit(FALSE);
 
-
 // Insert some values
 $mysqli -> query("DELETE FROM inventario WHERE Id='" . $_GET["Id"] . "'");
 
@@ -17,7 +16,7 @@ if (!$mysqli -> commit()) {
   exit();
 }
 
-header ("Location: makeupgoldpuebla.php?msg=".$msg."");
+header ("Location: producto.php?msg=".$msg."");
 
 
 ?>

@@ -20,5 +20,18 @@ if(count($_POST)>0)
      }
 
 }
-    header ("Location: makeupgoldpuebla.php?msg=".$msg."");
+switch ($Id_suc) {
+   case '1':
+      header ("Location: makeupgoldqueretaro.php?msg=".$msg."");
+      break;
+   case '2':
+      header ("Location: makeupgoldmichoacan.php?msg=".$msg."");
+      break;
+   case '3':
+      header ("Location: makeupgoldpuebla.php?msg=".$msg."");
+      break;            
+   default:
+      echo "ocurrio algo";
+      break;
+}
 ?>

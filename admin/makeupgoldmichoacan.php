@@ -12,7 +12,7 @@ $query_clientes = mysqli_query($mysqli, "SELECT * FROM categoria");
 
     <div class="container">
     <div class="pagetitle">
-      <h1>Categorias</h1>
+      <h1>MakeUp Gold-Morelia</h1>
     </div><!-- End Page Title -->
 
 <div class="container mt-2">
@@ -25,10 +25,10 @@ $query_clientes = mysqli_query($mysqli, "SELECT * FROM categoria");
         </div>
         <div class="col-md-12">
             <div class="float-left">
-                <h2>Lista de categorias</h2>
+                <h2>Lista de productos</h2>
             </div>            
             <div class="float-right">
-                <a href="agrega_inventario_suc.php" class="btn btn-success">Agregar nueva categoria</a>
+                <a href="agrega_inventario_suc.php" class="btn btn-success">Agregar producto</a>
             </div>
            
             <table class="table">
@@ -64,7 +64,7 @@ $query_clientes = mysqli_query($mysqli, "SELECT * FROM categoria");
                     <td><?php echo $array[4];?></td>
                     <td><?php echo $array[5];?></td>
                     <td> 
-                      <a href="edicion_cat.php?Id=<?php echo $array[0];?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                      <!-- <a href="edicion_prod_suc.php?Id=<?php echo $array[0];?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a> -->
                       <a href="eliminar_prod_suc.php?Id=<?php echo $array[0];?>" class="btn btn-danger"><i class="bi bi-file-x-fill"></i></a>
                 </tr>
                 <?php endwhile; ?>

@@ -1,4 +1,12 @@
-<?= require_once('header.php') ?>
+<?= require_once('header.php') ;
+
+if (!isset($_SESSION)){
+    session_start();
+    }
+if (!isset($_SESSION['user_id'])){
+header('location:/cliente/login.php');
+}
+?>
   <main id="main" class="main">
 
     <div class="pagetitle">
@@ -15,11 +23,11 @@
       <div class="row">
 
         <!-- Left side columns -->
-        <div class="col-lg-10">
-          <div class="row">
+<!--         <div class="col-lg-10">
+          <div class="row"> -->
 
             <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-6">
+            <!-- <div class="col-xxl-4 col-md-6">
               <div class="card info-card sales-card">
 
                 <div class="filter">
@@ -50,10 +58,10 @@
                 </div>
 
               </div>
-            </div><!-- End Sales Card -->
+            </div> --><!-- End Sales Card -->
 
             <!-- Revenue Card -->
-            <div class="col-xxl-4 col-md-6">
+            <!-- <div class="col-xxl-4 col-md-6">
               <div class="card info-card revenue-card">
 
                 <div class="filter">
@@ -85,7 +93,7 @@
                 </div>
 
               </div>
-            </div><!-- End Revenue Card -->
+            </div> --><!-- End Revenue Card -->
 
           <!-- vista -->
             <div class="col-xxl-4 col-md-8">
@@ -99,7 +107,7 @@
                   Ejecucion una consulta sql si una consulta es un select te devuelve un objeto de la clase mysql_resulttambien conocido como resultset o conjunto resultado
                   */
 
-                  $sql = "select * from primera_vista1";
+                  $sql = "SELECT * FROM primera_vista1";
                   $rs = query($sql);
 
                   ?>
@@ -133,14 +141,142 @@
                       <?php endif; ?>
                     </div>
 
-                   <span class="text-muted small pt-2 ps-1">increase</span>
                     </div>
                   </div>
                 </div>
 
               </div>
-            </div><!-- End Sales Card -->
+            </div><!-- FINAL DE LA VISTA-->
 
+          <!-- vista -->
+            <div class="col-xxl-4 col-md-8">
+              <div class="card info-card sales-card">
+
+                <?php
+                  // conexion con la base de datos
+                  require_once("mysql.lib.php"); //ingresa el codigo de la bibioteca
+                  $mysqli = conectar();
+                  /*
+                  Ejecucion una consulta sql si una consulta es un select te devuelve un objeto de la clase mysql_resulttambien conocido como resultset o conjunto resultado
+                  */
+
+                  $sql = "SELECT * FROM segunda_vista";
+                  $rs = query($sql);
+
+                  ?>
+
+                <div class="card-body">
+                  <?php if ($rs->num_rows  > 0 ) : ?>
+                      <table class="table table-bordered table-hover mt-2">
+                        <tr class="text-center table-info">
+                        <th>Nombre Estado</th>
+                        <th>Nombre Municipio</th>
+                        <th>Nombre Sucursal</th>
+                         </tr>
+                        <?php while ($row = $rs->fetch_assoc() ) :
+                          extract($row);
+
+                          ?>
+                            <td class="text-center"><?=$Nomb_esta ?></td>
+                            <td class="text-center"><?=$Nomb_Mun ?></td>
+                            <td class="text-center"><?=$Nom_suc ?></td>
+                          </tr>
+                          <?php endwhile; ?>
+                          hola
+                              </table>
+                          <?php else : ?>
+
+                          <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+                            <i class="fas fa-ban fa-3x"></i>
+                            ¡No hay sucursales!
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          </div>
+                      <?php endif; ?>
+                    </div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- FINAL DE LA VISTA-->
+
+          <!-- vista -->
+            <div class="col-xxl-4 col-md-8">
+              <div class="card info-card sales-card">
+
+                <?php
+                  // conexion con la base de datos
+                  require_once("mysql.lib.php"); //ingresa el codigo de la bibioteca
+                  $mysqli = conectar();
+                  /*
+                  Ejecucion una consulta sql si una consulta es un select te devuelve un objeto de la clase mysql_resulttambien conocido como resultset o conjunto resultado
+                  */
+
+                  $sql = "Show index from producto";
+                  $rs = query($sql);
+
+                  ?>
+
+                <div class="card-body">
+                  <?php if ($rs->num_rows  > 0 ) : ?>
+                      <table class="table table-bordered table-hover mt-2 responsive">
+                        <tr class="text-center table-info">
+                        <th>Tabla</th>
+                        <th>Non_unique</th>
+                        <th>Key_name</th>
+                        <th>Seq_in_index</th>
+                        <th>Column_name</th>
+                        <th>Collaction</th>
+                        <th>Cardinality</th>
+                        <th>Sub_part</th>
+                        <th>Packed</th>
+                        <th>Null</th>
+                        <th>Index_type</th>
+                        <th>Comment</th>
+                        <th>Index_comment</th>
+                        <th>Visible</th>
+                        <th>Expression</th>
+                         </tr>
+                        <?php while ($row = $rs->fetch_assoc() ) :
+                          extract($row);
+
+                          ?>
+                            <td class="text-center"><?=$Table ?></td>
+                            <td class="text-center"><?=$Non_unique ?></td>
+                            <td class="text-center"><?=$Key_name ?></td>
+                            <td class="text-center"><?=$Seq_in_index ?></td>
+                            <td class="text-center"><?=$Column_name ?></td>
+                            <td class="text-center"><?=$Collation ?></td>
+                            <td class="text-center"><?=$Cardinality ?></td>
+                            <td class="text-center"><?=$Sub_part ?></td>
+                            <td class="text-center"><?=$Packed ?></td>
+                            <td class="text-center"><?=$Null ?></td>
+                            <td class="text-center"><?=$Index_type ?></td>
+                            <td class="text-center"><?=$Comment ?></td>
+                            <td class="text-center"><?=$Index_comment ?></td>
+                            <td class="text-center"><?=$Visible ?></td>
+                            <td class="text-center"><?=$Expression ?></td>
+                          </tr>
+                          <?php endwhile; ?>
+                          hola
+                              </table>
+                          <?php else : ?>
+
+                          <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+                            <i class="fas fa-ban fa-3x"></i>
+                            ¡No hay sucursales!
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          </div>
+                      <?php endif; ?>
+                    </div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- FINAL DE LA VISTA-->            
 
 
         </div><!-- End Left side columns -->

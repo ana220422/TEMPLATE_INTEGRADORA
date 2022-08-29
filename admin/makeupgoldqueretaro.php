@@ -12,7 +12,7 @@ $mysqli = conectar();
 
     <div class="container">
     <div class="pagetitle">
-      <h1>Categorias</h1>
+      <h1>MakeUp Gold-Queretaro</h1>
     </div><!-- End Page Title -->
 
 <div class="container mt-2">
@@ -64,7 +64,7 @@ $mysqli = conectar();
                     <td><?php echo $array[4];?></td>
                     <td><?php echo $array[5];?></td>
                     <td> 
-                      <a href="edicion_cat.php?Id=<?php echo $array[0];?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                      <!-- <a href="edicion_cat.php?Id=<?php echo $array[0];?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a> -->
                       <a href="eliminar_cat.php?Id=<?php echo $array[0];?>" class="btn btn-danger"><i class="bi bi-file-x-fill"></i></a>
                 </tr>
                 <?php endwhile; ?>
