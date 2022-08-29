@@ -144,11 +144,11 @@
               <i class="bi bi-circle"></i><span>Usuario</span>
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a href="components-accordion.html">
               <i class="bi bi-circle"></i><span>Roles</span>
             </a>
-          </li>
+          </li> -->
         </ul>
       </li><!-- Final de nav usuarios -->
 
@@ -163,7 +163,7 @@
             </a>
           </li>
           <li>
-            <a href="Categorias.php">
+            <a href="categorias.php">
               <i class="bi bi-circle"></i><span>Categorias</span>
             </a>
           </li>
@@ -184,17 +184,17 @@
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="makeupgoldqueretaro.php">
-              <i class="bi bi-circle"></i><span>MakeUpQueretaro</span>
+              <i class="bi bi-circle"></i><span>MakeUp Gold-Queretaro</span>
             </a>
           </li>
           <li>
             <a href="makeupgoldmichoacan.php">
-              <i class="bi bi-circle"></i><span>MakeUpMichoacan</span>
+              <i class="bi bi-circle"></i><span>MakeUp Gold-Morelia</span>
             </a>
           </li>
           <li>
             <a href="makeupgoldpuebla.php">
-              <i class="bi bi-circle"></i><span>MakeUpPuebla</span>
+              <i class="bi bi-circle"></i><span>MakeUp Gold-Puebla</span>
             </a>
           </li>
         </ul>

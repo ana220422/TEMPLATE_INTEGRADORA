@@ -65,7 +65,7 @@ $query_clientes = mysqli_query($mysqli, "SELECT * FROM categoria");
                     <td><?php echo $array[5];?></td>
                     <td> 
                       <a href="edicion_cat.php?Id=<?php echo $array[0];?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                      <a href="eliminar_cat.php?Id=<?php echo $array[0];?>" class="btn btn-danger"><i class="bi bi-file-x-fill"></i></a>
+                      <a href="eliminar_prod_suc.php?Id=<?php echo $array[0];?>" class="btn btn-danger"><i class="bi bi-file-x-fill"></i></a>
                 </tr>
                 <?php endwhile; ?>
                 <?php else: ?>

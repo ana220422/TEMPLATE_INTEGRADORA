@@ -29,16 +29,21 @@
               <input type="hidden" name="Id" value="<?php echo $_GET["Id"]; ?>" class="form-control" required="">
               <div class="form-group">
                 <label for="exampleInputEmail1">Id</label>
-                <input type="text" name="Nombre_usuario" class="form-control" value="<?php echo $categoria['Id']; ?>" required="">
+                <input type="text" name="Nombre_usuario" class="form-control" value="<?php echo $categoria['Id']; ?>" required="" readonly>
               </div>
               <div class="form-group">
-                <label for="exampleInputEmail1">Nombre</label>
-                <input type="text" name="Nombre_usuario" class="form-control" value="<?php echo $categoria['Nombre_usuario']; ?>" required="">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Tipo</label>
-                <input type="text" name="Tipo" class="form-control" value="<?php echo $categoria['Tipo']; ?>" required="">
-              </div>
+                    <label>Nombre (email)</label>
+                    <!-- <input type="text" name="Nombre_usuario" class="form-control" required=""> -->
+                    <input type="email" name="Nombre_usuario" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" class="form-control" value="<?php echo $categoria['Nombre_usuario']; ?>" required="">
+                </div>
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" name="passwordU" class="form-control"  required="">
+                </div>
+                <div class="form-group">
+                    <label>Tipo</label>
+                    <input type="text" name="Tipo" class="form-control" value="<?php echo $categoria['Tipo']; ?>" required="">
+                </div>
               <hr>
 
               <button type="submit" class="btn btn-primary" value="submit">Guardar</button> 

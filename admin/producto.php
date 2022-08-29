@@ -2,9 +2,6 @@
 $conexion = require_once("mysql.lib.php");
 $mysqli = conectar();
 
-
-
-
 //Query que se ejecuta para obtener todos los producto
 $sql ="SELECT * FROM Producto";
 // $resultado = query($sql);
@@ -34,7 +31,7 @@ $sql ="SELECT * FROM Producto";
         </div>
         <div class="col-md-12">
             <div class="float-left">
-                <h2>Lista de categorias</h2>
+                <h2>Lista de productos</h2>
             </div>            
             <div class="float-right">
                 <a href="agregar_producto.php" class="btn btn-success">Agregar nuevo producto</a>
@@ -50,6 +47,7 @@ $sql ="SELECT * FROM Producto";
         <th scope="col">Caracteristicas</th>
         <th scope="col">Existencia</th>
         <th scope="col">Categoria</th>
+        <th scope="col">IMG</th>
         <th scope="col">Opciones</th>
       </tr>
     </thead>
@@ -65,16 +63,17 @@ $sql ="SELECT * FROM Producto";
                 <?php while($array=mysqli_fetch_row($result)): ?>
                 <tr>
                     <th scope="row"><?php echo $array[0];?></th>
-                    <td><?php echo $array[1];?></td>
-                    <td><?php echo $array[2];?></td>
-                    <td><?php echo $array[3];?></td>
-                    <td><?php echo $array[4];?></td>
-                    <td><?php echo $array[5];?></td>
-                    <td><?php echo $array[6];?></td>
-                    <td><?php echo $array[7];?></td>
+                    <td><?= $array[1];?></td>
+                    <td><?= $array[2];?></td>
+                    <td>$<?= $array[3];?></td>
+                    <td>$<?= $array[4];?></td>
+                    <td><?= $array[5];?></td>
+                    <td><?= $array[6];?></td>
+                    <td><?= $array[7];?></td>
+                    <td><?= $array[8];?></td>
                     <td> 
-                      <a href="edicion_cat.php?Id=<?php echo $array[0];?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                      <a href="eliminar_cat.php?Id=<?php echo $array[0];?>" class="btn btn-danger"><i class="bi bi-file-x-fill"></i></a>
+                      <a href="edicion_prod.php?Id=<?php echo $array[0];?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                      <a href="eliminar_prod.php?Id=<?php echo $array[0];?>" class="btn btn-danger"><i class="bi bi-file-x-fill"></i></a>
                     </td>
                 </tr>
                 <?php endwhile; ?>

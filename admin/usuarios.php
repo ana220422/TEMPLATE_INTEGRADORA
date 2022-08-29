@@ -34,7 +34,7 @@ $query_clientes = mysqli_query($mysqli, "SELECT Id,Nombre_usuario,Tipo FROM Prod
                 <h2>Lista de Usuarios</h2>
             </div>            
             <div class="float-right">
-                <a href="agregar_categoria.php" class="btn btn-success">Agregar nuevo Usuario</a>
+                <a href="agregar_usuario.php" class="btn btn-success">Agregar nuevo Usuario</a>
             </div>
            
             <table class="table table-bordered table-hover mt-2">
@@ -62,7 +62,7 @@ $query_clientes = mysqli_query($mysqli, "SELECT Id,Nombre_usuario,Tipo FROM Prod
                     <td><?php echo $array[2];?></td>
                     <td> 
                       <a href="edicion_usu.php?Id=<?php echo $array[0];?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                      <a href="eliminar_cat.php?Id=<?php echo $array[0];?>" class="btn btn-danger"><i class="bi bi-file-x-fill"></i></a>
+                      <a href="eliminar_usu.php?Id=<?php echo $array[0];?>" class="btn btn-danger"><i class="bi bi-file-x-fill"></i></a>
                     </td>
                 </tr>
                 <?php endwhile; ?>
@@ -76,7 +76,7 @@ $query_clientes = mysqli_query($mysqli, "SELECT Id,Nombre_usuario,Tipo FROM Prod
             </table>
         </div>
     </div>        
-</div>
+</div> <br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br> 
 
 <?php include_once "footer.php"; ?>
 
